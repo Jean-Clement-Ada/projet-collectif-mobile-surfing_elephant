@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home:HomePage(),
     );
   }
@@ -22,9 +22,9 @@ class EventPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Liste des spots"),
+        title: const Text("Liste des spots"),
       ),
-      body: Center(
+      body: const Center(
         child: Text("prochainement disponible"),
       ),
     );
@@ -47,6 +47,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
+            Image.asset("assets/images/logo_app.png"),
             const Text(
                 "Surfing Elephant",
               style: TextStyle(
