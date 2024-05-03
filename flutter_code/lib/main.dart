@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children:  [
-            Image.asset("assets/images/logo_app.png"),
+            Image.asset("assets/images/logo_app.webp"),
             const Text(
                 "Surfing Elephant",
               style: TextStyle(
