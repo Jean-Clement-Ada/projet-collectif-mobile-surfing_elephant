@@ -60,9 +60,19 @@ class HomePage extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+            Padding(padding: EdgeInsets.only(top: 20)),
             ElevatedButton(
+                style: ButtonStyle(
+                  padding: MaterialStatePropertyAll(EdgeInsets.all(20)),
+                  backgroundColor: MaterialStatePropertyAll(Colors.blue)
+                ),
                 onPressed: () => print("click btn"),
-                child:  const Text("Afficher planning"),
+                child:  const Text("Afficher les spots",
+                  style: TextStyle(
+                    fontSize: 20
+                  ),
+                ),
+
             )
           ],
         ),
