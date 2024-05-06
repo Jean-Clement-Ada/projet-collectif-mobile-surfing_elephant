@@ -10,8 +10,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return  MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Surfing Elephant"),
+        ),
+        body: HomePage(),
+        bottomNavigationBar:BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                 label: "Accueil"
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.waves),
+                label: "Liste des spots"
+            ),
+          ],
+        ) ,
+      ),
     );
   }
 }
