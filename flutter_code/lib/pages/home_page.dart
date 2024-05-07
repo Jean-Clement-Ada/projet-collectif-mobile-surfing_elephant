@@ -27,22 +27,6 @@ class HomePage extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Padding(padding: EdgeInsets.only(top: 20)),
-          ElevatedButton.icon(
-            style: ButtonStyle(
-                padding: MaterialStatePropertyAll(EdgeInsets.all(20)),
-                backgroundColor: MaterialStatePropertyAll(Colors.blue)),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  PageRouteBuilder(
-                      pageBuilder: (_, __, ___) => EventPage()));
-            },
-            label: Text(
-              "Afficher les spots",
-              style: TextStyle(fontSize: 20),
-            ),
-            icon: Icon(Icons.account_tree),
-          )
         ],
       ),
     );

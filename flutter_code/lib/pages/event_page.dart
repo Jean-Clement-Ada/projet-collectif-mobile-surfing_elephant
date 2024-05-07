@@ -15,9 +15,21 @@ class _EventPageState extends State<EventPage> {
   final events = [
     {
       "spotPhoto": "lien photo",
-      "nameSpot": "Bisacrosse",
+      "nameSpot": "Biscarosse",
       "place": "Sud_Ouest",
-      "difficulty": "level",
+      "difficulty": "1*",
+    },
+    {
+      "spotPhoto": "lien photo",
+      "nameSpot": "Nazaret",
+      "place": "Portugal",
+      "difficulty": "5*"
+    },
+    {
+      "spotPhoto": "lien photo",
+      "nameSpot": "SuperBank",
+      "place": "Gold Coast, Australia",
+      "difficulty": "4*"
     }
   ];
 

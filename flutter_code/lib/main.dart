@@ -29,7 +29,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Surfing Elephant"),
+          title: [
+            Text("Surfing Elephant"),
+            Text("Liste des spots")
+          ] [_currentIndex],
         ),
         body: [
           HomePage(),
@@ -43,7 +46,7 @@ class _MyAppState extends State<MyApp> {
           iconSize: 32,
           elevation: 10,
           // trait d'ombre sur la barre
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home),
                 label: "Accueil"
