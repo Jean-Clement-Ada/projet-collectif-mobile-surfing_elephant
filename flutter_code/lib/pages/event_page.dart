@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_code/pages/description_spot_page.dart';
 
 class EventPage extends StatefulWidget {
   const EventPage({super.key});
@@ -17,19 +18,19 @@ class _EventPageState extends State<EventPage> {
       "spotPhoto": "lien photo",
       "nameSpot": "Biscarosse",
       "place": "Sud_Ouest",
-      "difficulty": "1*",
+      "difficulty": "1⭐",
     },
     {
       "spotPhoto": "lien photo",
       "nameSpot": "Nazaret",
       "place": "Portugal",
-      "difficulty": "5*"
+      "difficulty": "5⭐"
     },
     {
       "spotPhoto": "lien photo",
       "nameSpot": "SuperBank",
       "place": "Gold Coast, Australia",
-      "difficulty": "4*"
+      "difficulty": "4⭐"
     }
   ];
 
@@ -47,12 +48,22 @@ class _EventPageState extends State<EventPage> {
           final difficulty = event["difficulty"];
 
 
-          return Card(
+          return GestureDetector(
+              onTap: () {
+                // Naviguer vers la page de description ici
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => DescriptionSpotPage(event: event)),
+                );
+              },
+
+           child: Card(
             child: ListTile(
               leading: Image.asset("assets/images/logo_app.webp"),
               title: Text("$nameSpot"),
               subtitle: Text("$place" + " " + "$difficulty"),
               trailing: Icon(Icons.more_vert),
+            )
             ),
           );
         },
@@ -60,3 +71,4 @@ class _EventPageState extends State<EventPage> {
     );
   }
 }
+

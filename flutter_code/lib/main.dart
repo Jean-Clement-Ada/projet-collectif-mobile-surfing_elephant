@@ -1,6 +1,7 @@
 import 'package:flutter_code/pages/event_page.dart';
 import 'package:flutter_code/pages/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_code/pages/description_spot_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,9 +37,10 @@ class _MyAppState extends State<MyApp> {
         ),
         body: [
           HomePage(),
-         EventPage()  //avec ca on définis Event comme page 2
-      ][_currentIndex], // et on questionne sur quel page on est avec current
-        bottomNavigationBar: BottomNavigationBar(
+          EventPage(),
+          DescriptionSpotPage()//avec ca on définis Event comme page 2
+         ][_currentIndex], // et on questionne sur quel page on est avec current
+         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           onTap: (index) => setCurrentIndex(index), //actionne currentindex(donc changement de page depuis la barre).
           selectedItemColor: Colors.green,
