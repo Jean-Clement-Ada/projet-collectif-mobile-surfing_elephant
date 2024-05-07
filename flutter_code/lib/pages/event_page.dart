@@ -19,18 +19,24 @@ class _EventPageState extends State<EventPage> {
       "nameSpot": "Biscarosse",
       "place": "Sud_Ouest",
       "difficulty": "1⭐",
+      "season": "10/04/2024 au 30/09/2024",
+      "influencers":"Reily Later"
     },
     {
       "spotPhoto": "lien photo",
       "nameSpot": "Nazaret",
       "place": "Portugal",
-      "difficulty": "5⭐"
+      "difficulty": "5⭐",
+      "season": "20/04/2024 au 30/10/2024",
+      "influencers":"Elena Chanbard"
     },
     {
       "spotPhoto": "lien photo",
       "nameSpot": "SuperBank",
       "place": "Gold Coast, Australia",
-      "difficulty": "4⭐"
+      "difficulty": "4⭐",
+      "season": "15/04/2024 au 25/12/2024",
+      "influencers":"Boa Smith"
     }
   ];
 
