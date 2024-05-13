@@ -8,54 +8,65 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-
-  int _currentIndex = 0; // sert à définir la page current à 0
+  int _currentIndex = 0;
 
   setCurrentIndex(int index) {
     setState(() {
-      _currentIndex = index; //sert à interroger sur quel page on est pour le modifier ensuite
-
+      _currentIndex = index;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false, // Pour masquer la bannière de débogage
+      theme: ThemeData(
+        primaryColor: Colors.lightBlueAccent, // Utilisation de la même couleur principale que sur la page d'accueil
+        appBarTheme: AppBarTheme(
+          elevation: 0, // Suppression de l'ombre sous la barre d'applications
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: [
-            Text("Surfing Elephant"),
-            Text("Liste des spots")
-          ] [_currentIndex],
+          title: Text(
+            _currentIndex == 0 ? "Surfing Elephant" : "Liste des spots",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          centerTitle: true,
         ),
-        body: [
-          HomePage(),
-          EventPage(),
-          DescriptionSpotPage()//avec ca on définis Event comme page 2
-         ][_currentIndex], // et on questionne sur quel page on est avec current
-         bottomNavigationBar: BottomNavigationBar(
+        body: IndexedStack(
+          index: _currentIndex,
+          children: [
+            HomePage(),
+            EventPage(),
+            DescriptionSpotPage(),
+          ],
+        ),
+        bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
-          onTap: (index) => setCurrentIndex(index), //actionne currentindex(donc changement de page depuis la barre).
-          selectedItemColor: Colors.green,
-          unselectedItemColor: Colors.black,
+          onTap: setCurrentIndex,
+          selectedItemColor: Colors.lightBlueAccent,
+          unselectedItemColor: Colors.grey,
           iconSize: 32,
           elevation: 10,
-          // trait d'ombre sur la barre
           items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "Accueil"
+              icon: Icon(Icons.home),
+              label: "Accueil",
             ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.waves),
-                label: "Liste des spots"
+              icon: Icon(Icons.waves),
+              label: "Liste des spots",
             ),
           ],
         ),
