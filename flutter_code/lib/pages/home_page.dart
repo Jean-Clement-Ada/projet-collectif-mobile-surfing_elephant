@@ -13,8 +13,8 @@ class HomePage extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20), // Arrondir les bords avec un rayon de 20
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.8, // Utilisation de 80% de la largeur de l'écran
-            padding: const EdgeInsets.all(20), // Ajouter un padding à l'intérieur du conteneur
+            width: MediaQuery.of(context).size.width * 0.95, // Utilisation de 80% de la largeur de l'écran
+            padding: const EdgeInsets.all(15), // Ajouter un padding à l'intérieur du conteneur
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/images/surf_home.jpg"), // Chemin de votre image de vague
