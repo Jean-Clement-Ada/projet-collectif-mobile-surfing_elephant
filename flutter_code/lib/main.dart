@@ -4,6 +4,7 @@ import 'package:flutter_code/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_code/pages/description_spot_page.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -50,7 +51,6 @@ class _MyAppState extends State<MyApp> {
           children: [
             HomePage(),
             EventPage(),
-            DescriptionSpotPage(),
             FormPage()
           ],
         ),
