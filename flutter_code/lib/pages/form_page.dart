@@ -1,3 +1,4 @@
+import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 
 class FormPage extends StatefulWidget {
@@ -15,6 +16,7 @@ class _FormPageState extends State <FormPage> {
   final placeSpotController = TextEditingController();
   final difficultySpotController = TextEditingController();
   final seasonSpotController = TextEditingController();
+  DateTime? selectedDate = DateTime.now();
 
   @override
   void dispose() {
@@ -86,21 +88,21 @@ class _FormPageState extends State <FormPage> {
                 controller: difficultySpotController,
               ),
             ),
+
             Container(
               margin: EdgeInsets.only(bottom: 10),
-              child: TextFormField(
-                decoration: InputDecoration(
+              child: DateTimeFormField(
+                decoration: const InputDecoration(
                   labelText: 'Date de début de saison',
-                  hintText: 'Entre la date de fin de saison',
-                  border: OutlineInputBorder(),
                 ),
-                validator: (value){
-                  if (value == null || value.isEmpty){
-                    return "Il manque des informations";
-                  }
-                  return null;
+                firstDate: DateTime.now().add(const Duration(days: 10)),
+                lastDate: DateTime.now().add(const Duration(days: 40)),
+                initialPickerDateTime: DateTime.now().add(const Duration(days: 20)),
+                onChanged: (DateTime? value) {
+                  setState(() {
+                    selectedDate = value;
+                  });
                 },
-                controller: seasonSpotController,
               ),
             ),
             SizedBox(
@@ -119,7 +121,7 @@ class _FormPageState extends State <FormPage> {
                     );
                     FocusScope.of(context).requestFocus(FocusNode());
 
-                    print("Ajout de $nameSpot situé à/en $placeSpot. La difficulté est de $difficulty et on peut y surfer du $season")
+                    print("Ajout de $nameSpot situé à/en $placeSpot. La difficulté est de $difficulty et on peut y surfer du $season");
                   }
                 },
                 child: Text("Envoyer")
