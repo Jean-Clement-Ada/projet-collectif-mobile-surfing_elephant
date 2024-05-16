@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "348150684273",
+    "project_id": "surfing-elephant-2a91f",
+    "storage_bucket": "surfing-elephant-2a91f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348150684273:android:7f3b32a56383cf277d19d0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_code"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD300l0d4dw91GuAKPrhPeXcY1MSdlKtZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

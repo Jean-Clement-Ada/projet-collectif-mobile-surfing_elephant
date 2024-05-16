@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "SurfingElephant": "surfing-elephant-2a91f",
+    "default": "surfing-elephant-2a91f"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
