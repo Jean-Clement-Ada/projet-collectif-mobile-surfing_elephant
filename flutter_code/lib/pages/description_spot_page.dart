@@ -29,7 +29,6 @@ class DescriptionSpotPage extends StatelessWidget {
               Text("Place: ${event!["place"]}"),
               Text("Difficulty: ${event!["difficulty"]}"),
               Text("Season: ${event!["season"]}"),
-              Text("Influencers: ${event!["influencers"]}"),
 
               // Ajoutez d'autres informations ici selon vos besoins
             ],

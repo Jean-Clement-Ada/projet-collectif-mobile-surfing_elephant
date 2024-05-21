@@ -17,14 +17,14 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(15), // Ajouter un padding à l'intérieur du conteneur
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/images/surf_home.jpg"), // Chemin de votre image de vague
+                image: AssetImage("images/surf_home.jpg"), // Chemin de votre image de vague
                 fit: BoxFit.cover, // Adapter l'image pour couvrir tout le conteneur
               ),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset("assets/images/logo_app.webp"),
+                Image.asset("images/logo_app.webp"),
                 const SizedBox(height: 20),
                 Text(
                   "Surfing Elephant",
