@@ -1,3 +1,6 @@
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_field/date_field.dart';
 import 'package:flutter/material.dart';
 
@@ -121,7 +124,13 @@ class _FormPageState extends State <FormPage> {
                     );
                     FocusScope.of(context).requestFocus(FocusNode());
 
-                    print("Ajout de $nameSpot situé à/en $placeSpot. La difficulté est de $difficulty et on peut y surfer du $season");
+                    CollectionReference recordsRef = FirebaseFirestore.instance.collection("records");
+                    recordsRef.add({
+                      'nameSpot' : nameSpot,
+                      'place' : placeSpot,
+                      'difficulty' : difficulty,
+                      'season' : season,
+                    });
                   }
                 },
                 child: Text("Envoyer")

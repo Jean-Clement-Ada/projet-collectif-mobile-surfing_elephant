@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:348150684273:android:7f3b32a56383cf277d19d0',
     messagingSenderId: '348150684273',
     projectId: 'surfing-elephant-2a91f',
+    databaseURL: 'https://surfing-elephant-2a91f-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'surfing-elephant-2a91f.appspot.com',
   );
 
@@ -62,7 +63,9 @@ class DefaultFirebaseOptions {
     appId: '1:348150684273:ios:d487a9154abd9f0e7d19d0',
     messagingSenderId: '348150684273',
     projectId: 'surfing-elephant-2a91f',
+    databaseURL: 'https://surfing-elephant-2a91f-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'surfing-elephant-2a91f.appspot.com',
     iosBundleId: 'com.example.flutterCode',
   );
+
 }

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_code/pages/description_spot_page.dart';
@@ -5,72 +6,58 @@ import 'package:flutter_code/pages/description_spot_page.dart';
 class EventPage extends StatefulWidget {
   const EventPage({super.key});
 
-
-
-
   @override
   State<EventPage> createState() => _EventPageState();
 }
 class _EventPageState extends State<EventPage> {
 
-  final events = [
-    {
-      "spotPhoto": "lien photo",
-      "nameSpot": "Biscarosse",
-      "place": "Sud_Ouest",
-      "difficulty": "1⭐",
-      "season": "10/04/2024 au 30/09/2024",
-      "influencers":"Reily Later"
-    },
-    {
-      "spotPhoto": "lien photo",
-      "nameSpot": "Nazaret",
-      "place": "Portugal",
-      "difficulty": "5⭐",
-      "season": "20/04/2024 au 30/10/2024",
-      "influencers":"Elena Chanbard"
-    },
-    {
-      "spotPhoto": "lien photo",
-      "nameSpot": "SuperBank",
-      "place": "Gold Coast, Australia",
-      "difficulty": "4⭐",
-      "season": "15/04/2024 au 25/12/2024",
-      "influencers":"Boa Smith"
-    }
-  ];
-
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ListView.builder(
-        itemCount: events.length,
-        itemBuilder: (context, index) {
-          final event = events[index];
-          final spotPhoto = event["spotPhoto"];
-          final nameSpot = event["nameSpot"];
-          final place = event["place"];
-          final difficulty = event["difficulty"];
+      child: StreamBuilder(
+        stream: FirebaseFirestore.instance.collection("records").snapshots(),
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          }
 
+          if (!snapshot.hasData) {
+            return Text("Aucun spot");
+          }
 
-          return GestureDetector(
-              onTap: () {
-                // Naviguer vers la page de description ici
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DescriptionSpotPage(event: event)),
-                );
-              },
+          List<DocumentSnapshot> records = snapshot.data!.docs;
 
-           child: Card(
-            child: ListTile(
-              leading: Image.asset("assets/images/logo_app.webp"),
-              title: Text("$nameSpot"),
-              subtitle: Text("$place" + " " + "$difficulty"),
-              trailing: Icon(Icons.more_vert),
-            )
-            ),
+          return ListView.builder(
+            itemCount: records.length,
+            itemBuilder: (context, index) {
+              final event = records[index];
+              final data = event.data() as Map<String, dynamic>;
+
+              // Vérifiez que les champs existent avant de les utiliser
+              final nameSpot = data.containsKey('nameSpot') && data['nameSpot'] is String ? data['nameSpot'] : 'Unknown';
+              final place = data.containsKey('place') && data['place'] is String ? data['place'] : 'Unknown';
+              final difficulty = data.containsKey('difficulty') && data['difficulty'] is String ? data['difficulty'] : 'Unknown';
+              final image = data.containsKey('image') && data['image'] is String ? data['image'] : 'assets/images/default_image.png';
+
+              return GestureDetector(
+                onTap: () {
+                  // Naviguer vers la page de description ici
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => DescriptionSpotPage(event: data)),
+                  );
+                },
+                child: Card(
+                  child: ListTile(
+                    leading: Image.network(image),
+                    title: Text(nameSpot),
+                    subtitle: Text("$place $difficulty"),
+                    trailing: Icon(Icons.more_vert),
+                  ),
+                ),
+              );
+            },
           );
         },
       ),
